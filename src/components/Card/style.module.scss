@@ -1,0 +1,15 @@
+.cardFrame {
+  width: 100%;
+  max-width: 500px;
+  min-width: 300px;
+  min-height: 200px;
+
+  border: 1px solid #000;
+  border-radius: 16px;
+  background-color: white;
+  padding: 16px 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

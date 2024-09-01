@@ -55,11 +55,7 @@ export default function PhotoUpload({ setImage, setEditMode }: PhotoUploadProps)
 
   return (
     <div className={s.photoUpload}>
-      <form
-        className={`photoUpload__dropzone ${dragActive ? 'photo-upload__dropzone--active' : ''}`}
-        onDragEnter={(e) => handleDrag(e)}
-        onSubmit={(e) => e.preventDefault()}
-      >
+      <form className={s.photoUpload__dropzone} onDragEnter={(e) => handleDrag(e)} onSubmit={(e) => e.preventDefault()}>
         <input ref={inputRef} type="file" accept="image/*" onChange={handleChange} style={{ display: 'none' }} />
         <div
           style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
@@ -69,7 +65,7 @@ export default function PhotoUpload({ setImage, setEditMode }: PhotoUploadProps)
           onDrop={handleDrop}
           onClick={onButtonClick}
         >
-          <p>사진을 드래그하여 놓거나 클릭하여 선택하세요</p>
+          <p>+</p>
         </div>
       </form>
     </div>

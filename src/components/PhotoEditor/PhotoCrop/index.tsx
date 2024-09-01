@@ -3,6 +3,8 @@ import Cropper from 'react-easy-crop';
 
 import { getCroppedImg } from '@/utils/getCroppingImg';
 
+import EditorContainer from '../EditorContainer';
+
 import s from './style.module.scss';
 
 interface PhotoCropProps {
@@ -38,14 +40,16 @@ export default function PhotoCrop({ image, setImage, setEditMode }: PhotoCropPro
 
   return (
     <div className={s.photoCrop}>
-      <div className={s.photoCrop__controls}>
-        <button type="button" onClick={handleSaveCrop} className={s.saveButton}>
-          Save Crop
-        </button>
-      </div>
-      <div className={s.photoCrop__editor}>
-        <Cropper image={image} crop={crop} zoom={zoom} aspect={16 / 9} onCropChange={setCrop} onZoomChange={setZoom} onCropComplete={handleCropComplete} />
-      </div>
+      <EditorContainer>
+        <div className={s.photoCrop__editor}>
+          <Cropper image={image} crop={crop} zoom={zoom} aspect={16 / 9} onCropChange={setCrop} onZoomChange={setZoom} onCropComplete={handleCropComplete} />
+        </div>
+        <div className={s.photoCrop__controls}>
+          <button type="button" onClick={handleSaveCrop} className={s.saveButton}>
+            Save Crop
+          </button>
+        </div>
+      </EditorContainer>
     </div>
   );
 }

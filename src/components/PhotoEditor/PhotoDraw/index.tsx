@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import EditorContainer from '../EditorContainer';
+
 import s from './style.module.scss';
 
 interface PhotoDrawProps {
@@ -75,14 +77,16 @@ export default function PhotoDraw({ image, setImage, setEditMode }: PhotoDrawPro
 
   return (
     <div className={s.photoDraw}>
-      <div className={s.photoDraw__canvasContainer}>
-        <canvas ref={canvasRef} onMouseDown={startDrawing} onMouseMove={draw} onMouseUp={stopDrawing} onMouseOut={stopDrawing} onBlur={stopDrawing} />
-      </div>
-      <div className={s.photoDraw__controls}>
-        <button type="button" onClick={handleSave}>
-          Save
-        </button>
-      </div>
+      <EditorContainer>
+        <div className={s.photoDraw__canvasContainer}>
+          <canvas ref={canvasRef} onMouseDown={startDrawing} onMouseMove={draw} onMouseUp={stopDrawing} onMouseOut={stopDrawing} onBlur={stopDrawing} />
+        </div>
+        <div className={s.photoDraw__controls}>
+          <button type="button" onClick={handleSave}>
+            Save
+          </button>
+        </div>
+      </EditorContainer>
     </div>
   );
 }
