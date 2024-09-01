@@ -1,4 +1,5 @@
 import Card from '@/components/Card';
+import TagInput from '@/components/Card/TagInput';
 import CardTextArea from '@/components/Card/TextArea';
 import PhotoEditor from '@/components/PhotoEditor';
 
@@ -10,6 +11,7 @@ export default function CardTestPage() {
       <Card>
         <PhotoEditor />
         <CardTextArea />
+        <TagInput />
       </Card>
     </div>
   );

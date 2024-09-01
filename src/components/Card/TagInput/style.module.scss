@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: none;
+}
+
+.input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.suggestions li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
