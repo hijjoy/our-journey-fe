@@ -4,6 +4,7 @@ import Image from 'next/image';
 import PhotoCrop from './PhotoCrop';
 import PhotoDraw from './PhotoDraw';
 import PhotoUpload from './PhotoUpload';
+import DateOverlay from '../DatePicker';
 
 import s from './style.module.scss';
 
@@ -49,6 +50,9 @@ export default function PhotoEditor() {
             >
               X
             </button>
+          </div>
+          <div className={s.photoEditor__timeWrapper}>
+            <DateOverlay />
           </div>
           <div className={s.photoEditor__img}>{image && <Image src={image} alt="image" width={400} height={600} />}</div>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import ColorPicker from './ColorPicker';
 import LintWidthPicker from './LineWidthPicker';
@@ -15,19 +15,21 @@ interface PhotoDrawProps {
 export default function PhotoDraw({ image, setImage, setEditMode }: PhotoDrawProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [lastX, setLastX] = useState(0);
-  const [lastY, setLastY] = useState(0);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const [history, setHistory] = useState<string[]>([]);
 
   const [color, setColor] = useState('#000000');
   const [penWidth, setWidth] = useState<number>(2);
 
-  useEffect(() => {
-    loadImageToCanvas();
-  }, [image]);
+  const saveToHistory = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const dataURL = canvas.toDataURL();
+      setHistory((prevHistory) => [...prevHistory, dataURL]);
+    }
+  }, []);
 
-  const loadImageToCanvas = () => {
+  const loadImageToCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     if (canvas && ctx) {
@@ -42,27 +44,25 @@ export default function PhotoDraw({ image, setImage, setEditMode }: PhotoDrawPro
         canvas.height = height;
         setCanvasSize({ width, height });
         ctx.drawImage(img, 0, 0, width, height);
-
-        // Save initial state to history
         saveToHistory();
       };
       img.src = image;
     }
-  };
+  }, [image, saveToHistory]);
 
-  const saveToHistory = () => {
+  useEffect(() => {
+    loadImageToCanvas();
+  }, [loadImageToCanvas]);
+
+  const getMousePos = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
-    if (canvas) {
-      const dataURL = canvas.toDataURL();
-      setHistory((prevHistory) => [...prevHistory, dataURL]);
-    }
-  };
+    if (!canvas) return { x: 0, y: 0 };
 
-  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    setIsDrawing(true);
-    const { offsetX, offsetY } = getMousePos(e);
-    setLastX(offsetX);
-    setLastY(offsetY);
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
   };
 
   const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -70,37 +70,33 @@ export default function PhotoDraw({ image, setImage, setEditMode }: PhotoDrawPro
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     if (canvas && ctx) {
-      const { offsetX, offsetY } = getMousePos(e);
+      const { x, y } = getMousePos(e);
 
-      ctx.beginPath();
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(offsetX, offsetY);
-      ctx.strokeStyle = `${color}`;
-      ctx.lineWidth = Number(penWidth);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = penWidth;
       ctx.lineCap = 'round';
+      ctx.lineTo(x, y);
       ctx.stroke();
-
-      setLastX(offsetX);
-      setLastY(offsetY);
+      ctx.beginPath();
+      ctx.moveTo(x, y);
     }
+  };
+
+  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    setIsDrawing(true);
+    draw(e);
   };
 
   const stopDrawing = () => {
     if (isDrawing) {
       setIsDrawing(false);
+      const canvas = canvasRef.current;
+      const ctx = canvas?.getContext('2d');
+      if (ctx) {
+        ctx.beginPath();
+      }
       saveToHistory();
     }
-  };
-
-  const getMousePos = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return { offsetX: 0, offsetY: 0 };
-
-    const rect = canvas.getBoundingClientRect();
-    return {
-      offsetX: e.clientX - rect.left,
-      offsetY: e.clientY - rect.top,
-    };
   };
 
   const handleSave = () => {
@@ -119,7 +115,7 @@ export default function PhotoDraw({ image, setImage, setEditMode }: PhotoDrawPro
   const handleRevert = () => {
     if (history.length > 1) {
       const newHistory = [...history];
-      newHistory.pop(); // Remove the current state
+      newHistory.pop();
       const previousState = newHistory[newHistory.length - 1];
 
       const canvas = canvasRef.current;

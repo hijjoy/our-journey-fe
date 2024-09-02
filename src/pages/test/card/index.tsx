@@ -13,6 +13,11 @@ export default function CardTestPage() {
         <CardTextArea />
         <TagInput />
       </Card>
+      <div style={{ height: '30px' }} />
+      <Card>
+        <CardTextArea />
+        <TagInput />
+      </Card>
     </div>
   );
 }

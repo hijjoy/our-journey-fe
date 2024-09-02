@@ -1,0 +1,10 @@
+@import '@/styles/';
+
+.date {
+  cursor: pointer;
+  color: rgb(255, 200, 129);
+  text-shadow: rgb(255, 136, 0) 1px 0 10px;
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: 'LAB';
+  font-size: 20px;
+}

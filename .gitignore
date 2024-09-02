@@ -35,3 +35,4 @@ next-env.d.ts
 
 # package manager
 package-lock.json
+.vercel
