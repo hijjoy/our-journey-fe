@@ -10,19 +10,19 @@ export default function Button(props: InterfaceButton) {
   const { children, buttonType = 'base', size = 'full', type = 'button', className, ...rest } = props;
 
   const buttonStyle = {
-    base: '.base ',
-    icon: '.icon ',
-    nav: '.nav ',
-    logo: '.logo ',
-    sort: '.sort ',
+    base: 'base ',
+    icon: 'icon ',
+    nav: 'nav ',
+    logo: 'logo ',
+    sort: 'sort ',
   };
 
   const baseSize = () => {
     if (buttonStyle[buttonType] === 'base') {
-      if (size === 's') return '.small ';
-      if (size === 'm') return '.medium ';
-      if (size === 'l') return '.large ';
-      if (size === 'full') return '.full ';
+      if (size === 's') return 'small ';
+      if (size === 'm') return 'medium ';
+      if (size === 'l') return 'large ';
+      if (size === 'full') return 'full ';
     }
     return '';
   };
