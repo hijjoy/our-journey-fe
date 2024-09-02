@@ -1,7 +1,19 @@
 .photoEditor {
-  position: relative;
-  width: 100%;
-  height: fit-content;
+  &__btnWrapper {
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    button {
+      font-size: 15px;
+      background-color: rgba(0, 0, 0, 0.226);
+      padding: 2px 8px;
+      border-radius: 18px;
+      border: 1px solid #000;
+      color: white;
+    }
+  }
 
   &__imageWrapper {
     width: 100%;
@@ -14,9 +26,5 @@
       width: 100% !important;
       height: 100% !important;
     }
-  }
-  &__btnWrapper {
-    position: absolute;
-    z-index: 100;
   }
 }

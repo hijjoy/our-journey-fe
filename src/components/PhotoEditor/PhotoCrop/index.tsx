@@ -38,15 +38,22 @@ export default function PhotoCrop({ image, setImage, setEditMode }: PhotoCropPro
     }
   };
 
+  const handleCancelCrop = () => {
+    setEditMode('default');
+  };
+
   return (
     <div className={s.photoCrop}>
       <EditorContainer>
         <div className={s.photoCrop__editor}>
-          <Cropper image={image} crop={crop} zoom={zoom} aspect={16 / 9} onCropChange={setCrop} onZoomChange={setZoom} onCropComplete={handleCropComplete} />
+          <Cropper image={image} crop={crop} zoom={zoom} aspect={4 / 3} onCropChange={setCrop} onZoomChange={setZoom} onCropComplete={handleCropComplete} />
         </div>
         <div className={s.photoCrop__controls}>
           <button type="button" onClick={handleSaveCrop} className={s.saveButton}>
-            Save Crop
+            Save
+          </button>
+          <button type="button" onClick={handleCancelCrop} className={s.saveButton}>
+            Cancel
           </button>
         </div>
       </EditorContainer>

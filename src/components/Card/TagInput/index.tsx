@@ -64,7 +64,7 @@ export default function TagInput() {
         <ul className={s.suggestions}>
           {suggestions.map((suggestion, index) => (
             <li key={index} onClick={() => addTag(suggestion)}>
-              #{suggestion}
+              {suggestion}
             </li>
           ))}
         </ul>
