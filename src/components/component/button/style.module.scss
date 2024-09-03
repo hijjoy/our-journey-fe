@@ -1,11 +1,17 @@
-.base {
+.base-small {
   background-color: #87c96e;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
   color: #353535;
+
+  width: 64px;
+  height: 32px;
 
   border: none;
   border-radius: 4px;
@@ -15,41 +21,73 @@
   cursor: pointer;
 }
 
-// ?CONCERN: 버튼에 대한 사이즈이니 base-s, base-m, base-l, base-f 로 하는 게 나을지 고민...
-.small {
+.base-medium {
+  background-color: #87c96e;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
-
-  width: 64px;
-  height: 32px;
-}
-
-.medium {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 600;
+  color: #353535;
 
   width: 96px;
   height: 36px;
+
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
+
+  cursor: pointer;
 }
 
-.large {
+.base-large {
+  background-color: #87c96e;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
+  color: #353535;
 
   width: 160px;
   height: 40px;
+
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
+
+  cursor: pointer;
 }
 
-.full {
+.base-full {
+  background-color: #87c96e;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
+  color: #353535;
 
   width: calc(100% - 32px);
   height: 44px;
+
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
+
+  cursor: pointer;
 }
 
 .icon {
