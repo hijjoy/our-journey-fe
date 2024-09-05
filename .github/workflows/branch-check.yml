@@ -1,0 +1,30 @@
+name: Branch Merge Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch names
+        run: |
+          SOURCE_BRANCH=${{ github.head_ref }}
+          TARGET_BRANCH=${{ github.base_ref }}
+          
+          if [[ $SOURCE_BRANCH =~ ^feat/#[0-9]+ && $TARGET_BRANCH != "feature" ]]; 
+          then
+            echo "Error: feat/# branches can only be merged into feature"
+            exit 1
+          elif [[ $SOURCE_BRANCH == "feature" && $TARGET_BRANCH != "develop" ]]; 
+          then
+            echo "Error: feature branch can only be merged into develop"
+            exit 1
+          elif [[ $SOURCE_BRANCH == "develop" && $TARGET_BRANCH != "main" ]]; 
+          then
+            echo "Error: develop branch can only be merged into main"
+            exit 1
+          else
+            echo "Branch check passed"
+          fi
