@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './style.module.scss';
 
 interface InterfaceButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-  buttonType?: 'base-small' | 'base-medium' | 'base-large' | 'base-full' | 'logo' | 'sort' | 'icon' | 'nav';
+  buttonType?: 'base-s' | 'base-m' | 'base-f' | 'base-full' | 'logo' | 'sort' | 'icon' | 'nav';
   children: ReactNode;
 }
 
