@@ -1,8 +1,9 @@
 html,
 body,
 #root {
+  font-family: 'Pretendard';
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 * {
@@ -13,7 +14,7 @@ body,
 
 html {
   line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  // -webkit-text-size-adjust: 100%; /* 2 */
   font-size: 62.5%;
 }
 
@@ -23,6 +24,7 @@ body {
 
 main {
   display: block;
+  overflow: scroll;
 }
 
 h1 {

@@ -1,0 +1,176 @@
+.profileBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.profileBoxMedium {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.profileBoxSmall {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.profileThumbnailPhoto {
+  width: 38px;
+  height: 38px;
+}
+
+.profileThumbnailPhotoMedium {
+  width: 20px;
+  height: 20px;
+}
+
+.profileThumbnailPhotoSmall {
+  width: 16px;
+  height: 16px;
+}
+
+.profileName {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #131313;
+}
+
+.profileNameHorizontal {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+
+  color: #131313;
+}
+
+.profileNameVertical {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+
+  color: #333333;
+}
+
+.profileSub {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  color: #8b8b8b;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #131313;
+}
+
+.titleHorizontal {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+
+  color: #131313;
+}
+
+.titleVertical {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.025em;
+
+  color: #131313;
+}
+
+.hashtagList {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.hashtag {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+
+  color: #008080;
+}
+
+.info {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+
+  color: #888888;
+}
+
+.infoHorizontal {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 14px;
+  color: #8b8b8b;
+}
+
+.infoVertical {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  color: #8b8b8b;
+}
+
+.followBtn {
+  box-sizing: border-box;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px;
+
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+
+  color: #333333;
+
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+}
+
+.thumbnail {
+  width: 328px;
+  height: 324px;
+  background: transparent;
+
+  margin: 14px 0;
+  border-radius: 4px;
+}
+
+.iconButton {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.date {
+  background: linear-gradient(135.19deg, #ffc300 -306.58%, #992100 1114.57%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  position: absolute;
+  z-index: 10;
+  font-weight: 600;
+  font-size: 12px;
+  top: 10px;
+  right: 10px;
+}
